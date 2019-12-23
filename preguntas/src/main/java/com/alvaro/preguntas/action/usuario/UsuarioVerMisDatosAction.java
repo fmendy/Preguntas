@@ -9,7 +9,6 @@ public class UsuarioVerMisDatosAction extends GeneralAction{
 	public String execute() throws Exception {
 		if (isUserLoged()) {
 			this.usuario = getUsuarioEnSession();
-			System.out.println(getUsuarioEnSession().getEmail());
 			return SessionesGlobales.SUCCESS;
 		}
 		else {

@@ -20,6 +20,7 @@
 <script src="includes/js/bootstrap.min.js"></script>
 <title>Postal</title>
 </head>
+<constant name="struts.ui.theme" value="simple" />
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -55,6 +56,7 @@
 		
 		
 	</nav>
+	
 
 </body>
 </html>

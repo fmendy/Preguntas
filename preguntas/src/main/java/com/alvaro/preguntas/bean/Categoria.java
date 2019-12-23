@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.alvaro.preguntas.bean;
 
 import java.sql.Date;
@@ -14,101 +11,86 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-
-/**
- * @author alvaro
- *
- */
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+@Table(name = "categoria")
+public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDUsuario", nullable = false, unique = true, updatable = false)
-	private int idUsuario;
+	@Column(name = "IDCategoria", nullable = false, unique = true, updatable = false)
+	private int idCategoria;
 
-	@Column(name = "Email", nullable = false, unique = true, length = 120)
-	private String email; 
+	@Column(name = "Nombre", nullable = false, unique = true, length = 120)
+	private String nombre;
 
-	@Column(name = "Password", nullable = false, length = 250)
-	private String password;
-	
-	@Column(name = "Apodo", nullable = false, length = 25, updatable = false, unique = true)
-	private String apodo;
-	
-	@Column(name = "Activo")
+	@Column(name = "Descripcion")
+	private String descripcion;
+
+	@Column(name = "Activo", insertable = false)
 	private boolean activo;
-	
+
 	@Column(name = "FechaCreacion", insertable = false, updatable = false)
 	private Date fechaCreacion;
-	
+
 	@Column(name = "FechaUltimaModificacion", insertable = false)
 	private Date fechaUltimaModificacion;
-	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "usuario")
+
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, mappedBy = "categoria")
 	private List<Pregunta> preguntas = new ArrayList();
 
-	/**
-	 * @return the idUsuario
-	 */
-	public int getIdUsuario() {
-		return idUsuario;
+	public Categoria() {
+		super();
+	}
+
+	public Categoria(int idCategoria) {
+		super();
+		this.idCategoria = idCategoria;
 	}
 
 	/**
-	 * @param idUsuario the idUsuario to set
+	 * @return the idCategoria
 	 */
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public int getIdCategoria() {
+		return idCategoria;
 	}
 
 	/**
-	 * @return the email
+	 * @param idCategoria the idCategoria to set
 	 */
-	public String getEmail() {
-		return email;
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @return the nombre
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public String getNombre() {
+		return nombre;
 	}
 
 	/**
-	 * @return the password
+	 * @param nombre the nombre to set
 	 */
-	public String getPassword() {
-		return password;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
-	 * @param password the password to set
+	 * @return the descripcion
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
 	/**
-	 * @return the apodo
+	 * @param descripcion the descripcion to set
 	 */
-	public String getApodo() {
-		return apodo;
-	}
-
-	/**
-	 * @param apodo the apodo to set
-	 */
-	public void setApodo(String apodo) {
-		this.apodo = apodo;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	/**
@@ -166,8 +148,5 @@ public class Usuario {
 	public void setPreguntas(List<Pregunta> preguntas) {
 		this.preguntas = preguntas;
 	}
-	
-	
-	
-	
+
 }

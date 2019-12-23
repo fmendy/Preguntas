@@ -13,5 +13,6 @@ public class SessionesGlobales  {
 	public static String SUCCESS = "SUCCESS";
 	public static String FAILED = "FAILED";
 	public static String LOGEADO = "LOGEADO";
+	public static String NO_LOGEADO = "NO_LOGEADO";
 
 }

@@ -60,7 +60,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			query.setParameter("usuarioEmail", usuario.getEmail());
 			query.setParameter("usuarioPassword", usuario.getPassword());
 			user = (Usuario) query.list().get(0);
-			System.out.println(user.getIdUsuario());
 
 			transaction.commit();
 

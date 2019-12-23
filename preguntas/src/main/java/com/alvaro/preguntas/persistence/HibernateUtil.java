@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import com.alvaro.preguntas.bean.Categoria;
+import com.alvaro.preguntas.bean.Pregunta;
+import com.alvaro.preguntas.bean.Respuesta;
 import com.alvaro.preguntas.bean.Usuario;
 import com.fasterxml.classmate.AnnotationConfiguration;
 
@@ -34,6 +37,9 @@ public class HibernateUtil {
 			configuration.setProperties(prop);
 
 			configuration.addAnnotatedClass(Usuario.class);
+			configuration.addAnnotatedClass(Categoria.class);
+			configuration.addAnnotatedClass(Pregunta.class);
+			configuration.addAnnotatedClass(Respuesta.class);
 			
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();

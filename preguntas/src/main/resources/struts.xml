@@ -68,6 +68,27 @@
 			<result name="input">/pages/usuario/usuarioRegistro.jsp</result>
 			
 		</action>
+		
+		<!-- PREGUNTAS -->
+		<action name="irCrearPregunta"
+			class="com.alvaro.preguntas.action.pregunta.PreguntaIrCrearAction"
+			method="execute">
+			<result name="SUCCESS">/pages/pregunta/preguntaCrear.jsp</result>
+			<result name="FAILED" type="redirectAction">
+				<param name="actionName">irUsuarioLogin</param>
+			</result>
+		</action>
+		
+		<action name="guardarPregunta"
+			class="com.alvaro.preguntas.action.pregunta.PreguntaGuardarAction"
+			method="execute">
+			<result name="SUCCESS">/pages/pregunta/preguntaCrear.jsp</result>
+			<result name="NO_LOGEADO" type="redirectAction">
+				<param name="actionName">irUsuarioLogin</param>
+			</result>
+			<result name="FAILED">/pages/pregunta/preguntaCrear.jsp</result>
+			<result name="input">/pages/usuario/usuarioRegistro.jsp</result>
+		</action>
 
 
 	</package>
